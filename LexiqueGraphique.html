@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexique des Graphiques</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .graphique {
+            margin-bottom: 40px;
+        }
+        .graphique canvas {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lexique des Graphiques</h1>
+
+    <div class="graphique">
+        <h2>Graphique en Ligne</h2>
+        <p>Un graphique en ligne est utilisé pour montrer des tendances au fil du temps. Exemple : Évolution des ventes mensuelles ou suivi de la température quotidienne.</p>
+        <canvas id="lineChart"></canvas>
+    </div>
+
+    <div class="graphique">
+        <h2>Graphique en Barres</h2>
+        <p>Un graphique en barres est utilisé pour comparer des valeurs entre différentes catégories. Exemple : Comparaison des ventes par région ou nombre d'abonnés par plateforme.</p>
+        <canvas id="barChart"></canvas>
+    </div>
+
+    <div class="graphique">
+        <h2>Graphique Circulaire</h2>
+        <p>Un graphique circulaire est utilisé pour montrer des proportions dans un ensemble de données. Exemple : Répartition des parts de marché ou des préférences alimentaires.</p>
+        <canvas id="pieChart"></canvas>
+    </div>
+
+    <div class="graphique">
+        <h2>Graphique en Aires</h2>
+        <p>Un graphique en aires est similaire à un graphique en ligne, mais l'espace sous la ligne est rempli. Exemple : Évolution cumulée des revenus ou suivi de la consommation d'énergie.</p>
+        <canvas id="areaChart"></canvas>
+    </div>
+
+    <div class="graphique">
+        <h2>Graphique en Radar</h2>
+        <p>Un graphique en radar est utilisé pour comparer plusieurs variables quantitatives. Exemple : Comparaison des compétences d'un candidat ou évaluation des performances d'un produit.</p>
+        <canvas id="radarChart"></canvas>
+    </div>
+
+    <div class="graphique">
+        <h2>Graphique en Bulles</h2>
+        <p>Un graphique en bulles est utilisé pour afficher trois dimensions de données. Exemple : Relation entre coût, bénéfice et risque d'un projet ou analyse de la population par âge et revenu.</p>
+        <canvas id="bubbleChart"></canvas>
+    </div>
+
+    <div class="graphique">
+        <h2>Graphique en Doughnut</h2>
+        <p>Un graphique en doughnut est similaire au graphique circulaire, mais avec un espace vide au centre. Exemple : Répartition des dépenses d'un budget ou des types de trafic web.</p>
+        <canvas id="doughnutChart"></canvas>
+    </div>
+
+    <div class="graphique">
+        <h2>Graphique Polaire</h2>
+        <p>Un graphique polaire est similaire au graphique radar, mais les points sont reliés par des lignes droites. Exemple : Comparaison des scores de satisfaction client ou des directions du vent.</p>
+        <canvas id="polarChart"></canvas>
+    </div>
+
+    <div class="graphique">
+        <h2>Graphique en Entonnoir</h2>
+        <p>Un graphique en entonnoir est utilisé pour visualiser les étapes d'un processus et le taux de conversion. Exemple : Taux de conversion dans un processus de vente ou suivi des inscriptions à un événement.</p>
+        <canvas id="funnelChart"></canvas>
+    </div>
+
+    <script>
+        // Graphique en Ligne
+        const ctxLine = document.getElementById('lineChart').getContext('2d');
+        new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet'],
+                datasets: [{
+                    label: 'Ventes',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }, {
+                    label: 'Température',
+                    data: [12, 14, 16, 18, 20, 22, 24],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Graphique en Barres
+        const ctxBar = document.getElementById('barChart').getContext('2d');
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Région A', 'Région B', 'Région C', 'Région D'],
+                datasets: [{
+                    label: 'Ventes',
+                    data: [65, 59, 80, 81],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Abonnés',
+                    data: [50, 70, 60, 90],
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Graphique Circulaire
+        const ctxPie = document.getElementById('pieChart').getContext('2d');
+        new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ['Entreprise A', 'Entreprise B', 'Entreprise C'],
+                datasets: [{
+                    label: 'Parts de Marché',
+                    data: [300, 50, 100],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }, {
+                    label: 'Préférences Alimentaires',
+                    data: [200, 150, 50],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        // Graphique en Aires
+        const ctxArea = document.getElementById('areaChart').getContext('2d');
+        new Chart(ctxArea, {
+            type: 'line',
+            data: {
+                labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet'],
+                datasets: [{
+                    label: 'Revenu Cumulé',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderWidth: 1,
+                    fill: true
+                }, {
+                    label: 'Consommation d\'Énergie',
+                    data: [50, 60, 70, 80, 90, 100, 110],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 1,
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Graphique en Radar
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['Compétence 1', 'Compétence 2', 'Compétence 3', 'Compétence 4', 'Compétence 5'],
+                datasets: [{
+                    label: 'Candidat A',
+                    data: [65, 59, 90, 81, 56],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Produit X',
+                    data: [50, 70, 60, 90, 80],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Graphique en Bulles
+        const ctxBubble = document.getElementById('bubbleChart').getContext('2d');
+        new Chart(ctxBubble, {
+            type: 'bubble',
+            data: {
+                datasets: [{
+                    label: 'Projets',
+                    data: [{
+                        x: 20,
+                        y: 30,
+                        r: 15
+                    }, {
+                        x: 40,
+                        y: 10,
+                        r: 10
+                    }],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Population',
+                    data: [{
+                        x: 30,
+                        y: 20,
+                        r: 20
+                    }, {
+                        x: 50,
+                        y: 30,
+                        r: 25
+                    }],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Graphique en Doughnut
+        const ctxDoughnut = document.getElementById('doughnutChart').getContext('2d');
+        new Chart(ctxDoughnut, {
+            type: 'doughnut',
+            data: {
+                labels: ['Catégorie A', 'Catégorie B', 'Catégorie C'],
+                datasets: [{
+                    label: 'Budget',
+                    data: [300, 50, 100],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }, {
+                    label: 'Trafic Web',
+                    data: [200, 150, 50],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        // Graphique Polaire
+        const ctxPolar = document.getElementById('polarChart').getContext('2d');
+        new Chart(ctxPolar, {
+            type: 'polarArea',
+            data: {
+                labels: ['Critère A', 'Critère B', 'Critère C', 'Critère D', 'Critère E'],
+                datasets: [{
+                    label: 'Satisfaction Client',
+                    data: [11, 16, 7, 3, 14],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }, {
+                    label: 'Directions du Vent',
+                    data: [20, 15, 10, 25, 30],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        // Graphique en Entonnoir
+        const ctxFunnel = document.getElementById('funnelChart').getContext('2d');
+        new Chart(ctxFunnel, {
+            type: 'bar',
+            data: {
+                labels: ['Visiteurs', 'Intéressés', 'Qualifiés', 'Convertis'],
+                datasets: [{
+                    label: 'Conversions',
+                    data: [100, 70, 40, 10],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Inscriptions',
+                    data: [150, 100, 60, 30],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
